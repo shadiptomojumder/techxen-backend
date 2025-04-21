@@ -2,6 +2,8 @@ import express from "express";
 import { AuthRoutes } from "../modules/auth/auth.route.js";
 import { GalleryRoutes } from "../modules/gallery/gallery.route.js";
 import { BlogRoutes } from "../modules/blogs/blogs.route.js";
+import { HeroSectionRoutes } from "../modules/home-page/hero-section/hero-section.route.js";
+import { ServiceSectionRoutes } from "../modules/home-page/services-section/services-section.route.js";
 
 const router = express.Router();
 
@@ -23,14 +25,14 @@ const moduleRoutes = [
         path: "/blogs",
         route: BlogRoutes,
     },
-    // {
-    //     path: "/banners",
-    //     route: BannerRoutes,
-    // },
-    // {
-    //     path: "/uploads",
-    //     route: UploadRoutes,
-    // },
+    {
+        path: "/hero-section",
+        route: HeroSectionRoutes,
+    },
+    {
+        path: "/services",
+        route: ServiceSectionRoutes,
+    },
 ];
 
 // Register each route and log it using console
