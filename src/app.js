@@ -6,7 +6,7 @@ import helmet from "helmet";
 import { StatusCodes } from "http-status-codes";
 import config from "./config/config.js";
 import globalErrorHandler from "./middlewares/globalErrorHandler.js";
-import routes from "../src/routes/route.js";
+import routes from "./routes/route.js";
 
 const app = express();
 
