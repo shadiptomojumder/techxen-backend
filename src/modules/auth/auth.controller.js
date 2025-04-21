@@ -46,7 +46,41 @@ const login = asyncErrorHandler(async (req, res) => {
     });
 });
 
+// Controller function to handle user logout
+const logout = async (req, res) => {
+    try {
+        const token =
+            req.cookies?.accessToken || req.headers.authorization?.split(" ")[1]; // Bearer <token>
+
+        // Define secure cookie options
+        const cookieOptions = {
+            httpOnly: true,
+            secure: config.env === "production",
+            path: "/", // Ensure cookies are cleared for the entire site
+        };
+
+        // Clear the access token from cookies
+        res.clearCookie("accessToken", cookieOptions);
+        res.clearCookie("refreshToken", cookieOptions);
+
+        // Send a proper logout success response
+        ApiResponse(res, {
+            statusCode: StatusCodes.OK,
+            success: true,
+            message: "User logged out successfully!",
+        });
+    } catch (error) {
+        console.error("Logout Error:", error);
+        ApiResponse(res, {
+            statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+            success: false,
+            message: "An unexpected error occurred during logout.",
+        });
+    }
+};
+
 export const AuthController = {
     signup,
-    login
+    login,
+    logout
 };

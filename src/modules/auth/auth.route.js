@@ -11,8 +11,8 @@ router.post("/signup", AuthController.signup);
 // Define the login route
 router.post("/login", AuthController.login);
 
-// // Define the logout route
-// router.post("/logout", AuthController.logout);
+// Define the logout route
+router.post("/logout", AuthController.logout);
 
 const AuthRoutes = router;
 
