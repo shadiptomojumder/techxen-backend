@@ -4,6 +4,8 @@ import { GalleryRoutes } from "../modules/gallery/gallery.route.js";
 import { BlogRoutes } from "../modules/blogs/blogs.route.js";
 import { HeroSectionRoutes } from "../modules/home-page/hero-section/hero-section.route.js";
 import { ServiceSectionRoutes } from "../modules/home-page/services-section/services-section.route.js";
+import { TeamsRoutes } from "../modules/teams/teams.route.js";
+import { ProjectRoutes } from "../modules/projects/projects.route.js";
 
 const router = express.Router();
 
@@ -32,6 +34,14 @@ const moduleRoutes = [
     {
         path: "/services",
         route: ServiceSectionRoutes,
+    },
+    {
+        path: "/teams",
+        route: TeamsRoutes,
+    },
+    {
+        path: "/projects",
+        route: ProjectRoutes,
     },
 ];
 
