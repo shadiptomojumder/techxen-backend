@@ -6,14 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "pm2 start ecosystem.config.cjs --env production",
+    "start": "node server.js",
     "start:local": "node server.js",
-    "stop": "pm2 stop techxen-backend",
-    "restart": "pm2 restart techxen-backend",
-    "reload": "pm2 reload techxen-backend",
-    "logs": "pm2 logs techxen-backend",
-    "lint": "eslint .",
-    "postinstall": "pm2 install pm2-logrotate"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
