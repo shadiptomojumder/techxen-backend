@@ -1,6 +1,5 @@
 import http from "http";
 import app from "./src/app.js";
-import config from "./src/config/config.js";
 import connectDB from "./src/db/dbConnection.js";
 
 async function startServer() {
@@ -8,9 +7,12 @@ async function startServer() {
         // Connect to MongoDB
         await connectDB();
 
+        // Use the port provided by Vercel or default to 3000
+        const PORT = process.env.PORT || 3000;
+
         // Start the server
-        const server = http.createServer(app).listen(config.port, () => {
-            console.log(`Server running on port ${config.port}`);
+        const server = http.createServer(app).listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
         });
 
         // Function to handle server shutdown

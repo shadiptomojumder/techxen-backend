@@ -6,6 +6,8 @@ import { Project } from "./projects.model.js";
 // Controller to create a new project
 const createProject = asyncErrorHandler(async (req, res) => {
     const { title, banner, subtitle } = req.body;
+    console.log("The request body is:", req.body);
+    
 
     // Convert comma-separated tags into an array
     const tags = req.body.tags
