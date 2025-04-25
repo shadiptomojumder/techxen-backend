@@ -61,3 +61,6 @@ async function startServer() {
 }
 
 startServer();
+
+// Export the app instance for Vercel
+export default app;
