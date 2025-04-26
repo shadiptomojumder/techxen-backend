@@ -1,8 +1,21 @@
+import http from "http";
 import app from "../src/app.js";
 import connectDB from "../src/db/dbConnection.js";
-import serverless from "serverless-http";
 
-// Connect to DB when function is first loaded 
-await connectDB();
+let isConnected = false;
 
-export default serverless(app);
+export default async function handler(req, res) {
+    if (!isConnected) {
+        try {
+            await connectDB();
+            isConnected = true;
+            console.log("MongoDB Connected inside Vercel function!");
+        } catch (error) {
+            console.error("MongoDB connection failed:", error);
+            return res.status(500).json({ message: "Database connection failed" });
+        }
+    }
+
+    // Now pass the request to Express app
+    app(req, res);
+}

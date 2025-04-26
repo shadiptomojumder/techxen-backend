@@ -11,7 +11,7 @@ import routes from "./routes/route.js";
 const app = express();
 
 // Enable trust proxy for rate limiting behind a proxy (e.g., Vercel)
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 
 // Apply security middlewares
 app.use(helmet());
