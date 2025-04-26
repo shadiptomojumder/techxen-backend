@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 import config from "../config/config.js";
 
 const connectDB = async () => {
+    if (mongoose.connection.readyState >= 1) {
+        console.log("Already connected to MongoDB.");
+        return;
+    }
+
     try {
         const connectionInstance = await mongoose.connect(config.database_url);
         console.log(
@@ -11,6 +16,7 @@ const connectDB = async () => {
         
     } catch (error) {
         console.log("MONGODB CONNECTION FAILED:", error);
+        throw new Error("MongoDB connection failed");
         process.exit(1);
     }
 };
