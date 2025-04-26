@@ -5,4 +5,4 @@ import serverless from "serverless-http";
 // Connect to DB when function is first loaded 
 await connectDB();
 
-export const handler = serverless(app);
+export default serverless(app);
